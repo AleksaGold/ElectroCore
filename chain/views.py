@@ -4,7 +4,7 @@ from rest_framework.generics import (CreateAPIView, DestroyAPIView,
 
 from chain.models import Chain, Contact, Product
 from chain.serializers import (ChainDetailSerializer, ChainSerializer,
-                               ContactSerializer, ProductSerializer)
+                               ContactSerializer, ProductSerializer, ChainUpdateSerializer)
 
 
 class ContactCreateAPIView(CreateAPIView):
@@ -84,6 +84,7 @@ class ChainListAPIView(ListAPIView):
 
     queryset = Chain.objects.all()
     serializer_class = ChainSerializer
+    filterset_fields = ("contact__country",)
 
 
 class ChainRetrieveAPIView(RetrieveAPIView):
@@ -97,7 +98,7 @@ class ChainUpdateAPIView(UpdateAPIView):
     """Представление для обновления объекта модели Chain."""
 
     queryset = Chain.objects.all()
-    serializer_class = ChainSerializer
+    serializer_class = ChainUpdateSerializer
 
 
 class ChainDestroyAPIView(DestroyAPIView):

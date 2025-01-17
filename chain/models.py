@@ -56,19 +56,19 @@ class Chain(models.Model):
         "chain.Contact",
         on_delete=models.SET_NULL,
         verbose_name="Контакты",
-        related_name="chain",
+        related_name="chain_contact",
         **NULLABLE,
     )
     product = models.ManyToManyField(
         "chain.Product",
         verbose_name="Продукты",
-        related_name="chain",
+        related_name="chain_product",
     )
     supplier = models.ForeignKey(
         "self",
         on_delete=models.SET_NULL,
         verbose_name="Поставщик",
-        related_name="chain",
+        related_name="chain_supplier",
         **NULLABLE,
     )
     debt = models.DecimalField(
@@ -86,6 +86,5 @@ class Chain(models.Model):
     def __str__(self):
         """Возвращает строковое представление объекта."""
         return (
-            f"{self.name} уровень:{self.level}, продукты: {self.product}, "
-            f"поставщик: {self.supplier}, задолженность: {self.debt}"
+            f"{self.name} - уровень: {self.level}, задолженность: {self.debt}"
         )

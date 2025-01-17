@@ -1,6 +1,7 @@
 from rest_framework.serializers import ModelSerializer
 
 from chain.models import Chain, Contact, Product
+from chain.validators import validate_structure
 
 
 class ContactSerializer(ModelSerializer):
@@ -46,6 +47,24 @@ class ChainSerializer(ModelSerializer):
             "debt",
             "created_at",
         )
+        validators = [validate_structure]
+
+
+class ChainUpdateSerializer(ModelSerializer):
+    """Сериализатор для обновления одного объекта модели Chain."""
+
+    class Meta:
+        model = Chain
+        fields = (
+            "id",
+            "name",
+            "level",
+            "contact",
+            "product",
+            "supplier",
+            "created_at",
+        )
+        validators = [validate_structure]
 
 
 class ChainDetailSerializer(ModelSerializer):
