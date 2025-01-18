@@ -7,8 +7,4 @@ from users.models import User
 class UserAdmin(admin.ModelAdmin):
     """Класс для настройки отображения модели "User" в административной панели"""
 
-    list_display = (
-        "pk",
-        "email",
-        "is_active"
-    )
+    list_display = ("pk", "email", "is_active")

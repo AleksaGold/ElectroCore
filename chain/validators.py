@@ -7,7 +7,11 @@ def validate_structure(value):
     supplier = dict(value).get("supplier")
     if supplier:
         if level <= supplier.level:
-            raise serializers.ValidationError("Поставщик не может быть ниже или равен в иерархии")
+            raise serializers.ValidationError(
+                "Поставщик не может быть ниже или равен в иерархии"
+            )
     elif level is not None and level != 0:
-        raise serializers.ValidationError("Уровень больше 0 требует указания поставщика.")
+        raise serializers.ValidationError(
+            "Уровень больше 0 требует указания поставщика."
+        )
     return value

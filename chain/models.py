@@ -85,6 +85,4 @@ class Chain(models.Model):
 
     def __str__(self):
         """Возвращает строковое представление объекта."""
-        return (
-            f"{self.name} - уровень: {self.level}, задолженность: {self.debt}"
-        )
+        return f"{self.name} - уровень: {self.level}, задолженность: {self.debt}"

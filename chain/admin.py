@@ -38,6 +38,7 @@ class ChainAdmin(admin.ModelAdmin):
     def clear_debt(self, request, queryset):
         """Очищает задолженность перед поставщиком."""
         queryset.update(debt=0)
+
     clear_debt.short_description = "Очистить задолженность перед поставщиком"
 
     def supplier_name(self, chain):
@@ -45,6 +46,7 @@ class ChainAdmin(admin.ModelAdmin):
         url = reverse("admin:chain_chain_change", args=[chain.id])
         link = '<a href="%s">%s</a>' % (url, chain.name)
         return mark_safe(link)
+
     supplier_name.short_description = "Поставщик"
 
     list_display = (

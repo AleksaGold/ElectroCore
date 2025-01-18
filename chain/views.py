@@ -4,7 +4,8 @@ from rest_framework.generics import (CreateAPIView, DestroyAPIView,
 
 from chain.models import Chain, Contact, Product
 from chain.serializers import (ChainDetailSerializer, ChainSerializer,
-                               ContactSerializer, ProductSerializer, ChainUpdateSerializer)
+                               ChainUpdateSerializer, ContactSerializer,
+                               ProductSerializer)
 
 
 class ContactCreateAPIView(CreateAPIView):
